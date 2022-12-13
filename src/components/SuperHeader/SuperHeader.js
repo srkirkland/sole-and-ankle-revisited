@@ -1,28 +1,46 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS } from '../../constants';
+import { BREAKPOINTS, COLORS } from "../../constants";
 
-import SearchInput from '../SearchInput';
-import UnstyledButton from '../UnstyledButton';
-import Icon from '../Icon';
+import SearchInput from "../SearchInput";
+import UnstyledButton from "../UnstyledButton";
+import Icon from "../Icon";
 
 const SuperHeader = () => {
   return (
-    <Wrapper>
-      <MarketingMessage>
-        Free shipping on domestic orders over $75!
-      </MarketingMessage>
-      <SearchInput />
-      <HelpLink href="/help">Help</HelpLink>
-      <UnstyledButton>
-        <Icon id="shopping-bag" strokeWidth={1} />
-      </UnstyledButton>
-    </Wrapper>
+    <SuperWrapper>
+      <MiniBar />
+      <Wrapper>
+        <MarketingMessage>
+          Free shipping on domestic orders over $75!
+        </MarketingMessage>
+        <SearchInput />
+        <HelpLink href="/help">Help</HelpLink>
+        <UnstyledButton>
+          <Icon id="shopping-bag" strokeWidth={1} />
+        </UnstyledButton>
+      </Wrapper>
+    </SuperWrapper>
   );
 };
 
+const SuperWrapper = styled.div``;
+
+const MiniBar = styled.div`
+  @media (max-width: ${BREAKPOINTS.laptop}rem) {
+    display: flex;
+    color: ${COLORS.gray[300]};
+    background-color: ${COLORS.gray[900]};
+    height: 4px;
+    width: 100%;
+  }
+`;
 const Wrapper = styled.div`
+  @media (max-width: ${BREAKPOINTS.laptop}rem) {
+    display: none;
+  }
+
   display: flex;
   align-items: center;
   gap: 24px;
