@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { BREAKPOINTS, COLORS, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import Icon from "../Icon";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -29,7 +30,16 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Side />
+        <MobileNav>
+          <NavLink href="/sale">
+            <Icon id="shopping-bag" strokeWidth={1} />
+          </NavLink>
+          <NavLink href="/sale">
+            <Icon id="search" strokeWidth={1} />
+          </NavLink>
+          <Icon id="menu" strokeWidth={1} />
+        </MobileNav>
+        <EndSide />
       </MainHeader>
 
       <MobileMenu
@@ -46,15 +56,38 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  justify-content: space-between;
+`;
+
+const MobileNav = styled.nav`
+  @media (min-width: ${BREAKPOINTS.laptop}rem) {
+    display: none;
+  }
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 5vw;
 `;
 
 const Nav = styled.nav`
+  @media (max-width: ${BREAKPOINTS.laptop}rem) {
+    display: none;
+  }
+
   display: flex;
   gap: 48px;
   margin: 0px 48px;
 `;
 
 const Side = styled.div`
+  flex: 1;
+`;
+
+const EndSide = styled.div`
+  @media (max-width: ${BREAKPOINTS.laptop}rem) {
+    display: none;
+  }
+
   flex: 1;
 `;
 
