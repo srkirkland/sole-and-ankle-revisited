@@ -37,7 +37,9 @@ const Header = () => {
           <NavLink href="/sale">
             <Icon id="search" strokeWidth={1} />
           </NavLink>
-          <Icon id="menu" strokeWidth={1} />
+          <MobileNavButton onClick={() => setShowMobileMenu(true)}>
+            <Icon id="menu" strokeWidth={1} />
+          </MobileNavButton>
         </MobileNav>
         <EndSide />
       </MainHeader>
@@ -57,6 +59,11 @@ const MainHeader = styled.div`
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
   justify-content: space-between;
+`;
+
+const MobileNavButton = styled.button`
+  background-color: transparent;
+  border: none;
 `;
 
 const MobileNav = styled.nav`
