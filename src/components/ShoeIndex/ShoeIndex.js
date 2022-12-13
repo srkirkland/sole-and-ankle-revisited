@@ -14,7 +14,16 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <Title>Running</Title>
+          <div>
+            <MobileCrumbs>
+              <Breadcrumbs>
+                <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+                <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+                <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
+              </Breadcrumbs>
+            </MobileCrumbs>
+            <Title>Running</Title>
+          </div>
           <Select
             label="Sort"
             value={sortId}
@@ -55,11 +64,21 @@ const LeftColumn = styled.div`
   flex-basis: 248px;
 `;
 
+const MobileCrumbs = styled.div`
+  @media (min-width: ${BREAKPOINTS.tablet}rem) {
+    display: none;
+  }
+`;
+
 const MainColumn = styled.div`
   flex: 1;
 `;
 
 const Header = styled.header`
+  @media (max-width: ${BREAKPOINTS.tablet}rem) {
+    align-items: center;
+  }
+
   display: flex;
   justify-content: space-between;
   align-items: baseline;
